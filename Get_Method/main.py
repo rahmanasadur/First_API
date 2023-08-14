@@ -66,3 +66,31 @@ coupon_code = {
 @app.get("/get_coupon/{code}")
 async def get_items(code: int):
     return { 'discount_amount': coupon_code.get(code) }
+
+
+
+
+usernames = list()
+# Put_Function
+@app.put("/put_data/{user_name}")
+def put_data(user_name):
+    usernames.append(user_name)
+    print(usernames)
+    return {
+        "user_name":user_name
+    }
+
+# Post_function
+@app.post("/post_data/{user_name}")
+def post_data(user_name):
+    usernames.append(user_name)
+    return{
+        "username":usernames
+    }
+
+@app.delete("/delete_data/{user_name}")
+def delete_user(user_name):
+    usernames.remove(user_name)
+    return {
+        "username":usernames
+    }
